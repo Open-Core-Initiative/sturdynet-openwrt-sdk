@@ -17,5 +17,5 @@ stages:
 build:
   stage: build
   script:
-    - docker image build --file=Dockerfile --pull --tag=prajval7433/docker-openwrt-sdk:22.03.1-ipq40xx . || exit 1
-    - docker push "prajval7433/docker-openwrt-sdk:22.03.1-ipq40xx" || exit 2
+    - docker image build --file=Dockerfile --pull --tag=sturdynetoci/docker-openwrt-sdk:22.03.1-ipq40xx . || exit 1
+    - docker push "sturdynetoci/docker-openwrt-sdk:22.03.1-ipq40xx" || exit 2
