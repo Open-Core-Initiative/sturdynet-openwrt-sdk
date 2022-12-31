@@ -1,0 +1,21 @@
+# http://doc.gitlab.com/ce/ci/yaml/README.html
+# https://docs.gitlab.com/ce/ci/variables/README.html
+# https://docs.gitlab.com/ce/ci/docker/using_docker_build.html#use-docker-in-docker-executor
+
+variables:
+  # tag naming
+  TAG_FINAL: latest
+  TAG_PREFIX: ${CI_COMMIT_REF_NAME%master}
+
+before_script:
+  - if [[ -n "${DOCKER_USERNAME}" ]]; then echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin docker.io; fi
+  - docker info
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - docker image build --file=Dockerfile --pull --tag=prajval7433/docker-openwrt-sdk:22.03.1-ipq40xx . || exit 1
+    - docker push "prajval7433/docker-openwrt-sdk:22.03.1-ipq40xx" || exit 2
