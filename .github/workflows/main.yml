@@ -1,4 +1,4 @@
-name: ci
+name: building containerized OpenWRT SDK
 
 on:
   push:
