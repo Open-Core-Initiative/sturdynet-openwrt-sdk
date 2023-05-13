@@ -14,7 +14,6 @@ jobs:
       - run: sudo docker builder prune --force --all
       - run: sudo docker system prune --force --all
       - run: sudo docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: sudo docker image build --file=Dockerfile --pull --tag=${{ secrets.DOCKERHUB_USERNAME }}/rootfs:latest .
+      - run: sudo docker image build --file=Dockerfile --pull --tag=${{ secrets.DOCKERHUB_USERNAME }}/docker-openwrt-sdk:22.03.1-latest .
       - run: sudo docker push "${{ secrets.DOCKERHUB_USERNAME }}/docker-openwrt-sdk:22.03.1-latest"
       - run: sudo docker logout
-      - run: cd .. && rm -rf build
