@@ -1,9 +1,9 @@
 name: building containerized OpenWRT SDK
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - "main"
+    branches: ["main"]
 
 jobs:
   build:
