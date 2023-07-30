@@ -1,9 +1,4 @@
-# http://doc.gitlab.com/ce/ci/yaml/README.html
-# https://docs.gitlab.com/ce/ci/variables/README.html
-# https://docs.gitlab.com/ce/ci/docker/using_docker_build.html#use-docker-in-docker-executor
-
 variables:
-  # tag naming
   TAG_FINAL: latest
   TAG_PREFIX: ${CI_COMMIT_REF_NAME%master}
 
