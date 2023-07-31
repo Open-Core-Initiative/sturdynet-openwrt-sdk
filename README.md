@@ -1,6 +1,6 @@
 <p  align="center">
 
-<img  src="https://github.com/Open-Core-Initiative/sturdynet-openwrt-sdk/assets/41849970/80264c59-a9a5-4974-a937-929b1d7874f4">
+<img  src="https://github.com/Open-Core-Initiative/sturdynet-openwrt-sdk/assets/41849970/fb7cb650-82fa-47ae-842f-fadec816c229">
 
 </p>
 
@@ -10,14 +10,14 @@
 
 | File                       | Description                                         |
 | :------------------------ | :-------------------------------------------------------- |
-| `scripts/add-custom-local-feed.sh` | This file adds the custom feed directory into packages feeds available in SDK.        |
+| `scripts/add-custom-local-feed.sh` | This file adds the custom feed directory into package feeds available in SDK.        |
 | `scripts/generate-repository.sh` | Copy the public key, packages, etc. into the directory to publish them.        |
 | `scripts/install-custom-feed-packages.sh` | Install sources of all packages from the custom feed into SDK.        |
 | `scripts/make-custom-feed-packages.sh` | Compile and build all packages from the custom feed in SDK into the SDK bin output directory.        |
 | `scripts/make-index.sh` | The private and public key pair will be generated if the private key file does not exist.        |
 | `scripts/make.sh` | Execute make in the SDK home directory with given arguments.        |
-| `scripts/reconfigure.sh` | Reconfigure SDK to disable build of all target specific packages, all kernel module packages, and all userspace packages, and enable the remaining (custom) packages built as modules by default.        |
-| `Dockerfile` | This file will be use to create a docker image of our imagebuilder.        |
+| `scripts/reconfigure.sh` | Reconfigure SDK to disable the build of all target-specific packages, all kernel module packages, and all userspace packages, and enable the remaining (custom) packages built as modules by default.        |
+| `Dockerfile` | This file will be used to create a docker image of our imagebuilder.        |
 | `.github/workflows/main.yml` | Yaml file used by GitHub action to build images.        |
 
 ---
@@ -30,7 +30,7 @@
 
 ---
 
-## Link Dockerhub account with the repository
+## Link the Dockerhub account with the repository
 
 1. Open [Dockerhub](https://hub.docker.com/), go to `Account Settings` -> `Security` -> `New Access Token`.
 2. Go to Github Repository setting -> `Actions secrets and variables`. Add the following two secrets:
@@ -44,9 +44,9 @@
 
 ---
 
-## How to dockerised your SDK?
+## How to dockerize your SDK?
 
-1. Open `Dockerfile` and change `SDK_URL` to you SDK file link.
+1. Open `Dockerfile` and change `SDK_URL` to your SDK file link.
 2. Change `SDK_NAME` to your file name.
 3. Change the following env variables to match your Imagebuilder details:
 
@@ -61,9 +61,8 @@
 4. Go to `.github/workflows/main.yml` file and change the following name to your intended docker image name:
 
 
-            - run: sudo docker image build --file=Dockerfile --pull --tag=${{ secrets.DOCKERHUB_USERNAME }}/YOUR_DOCKER_IMAGE_NAME:YOUR_DOCKER_TAG .
-            - run: sudo docker push "${{ secrets.DOCKERHUB_USERNAME }}/YOUR_DOCKER_IMAGE_NAME:YOUR_DOCKER_TAG"
-
+       - run: sudo docker image build --file=Dockerfile --pull --tag=${{ secrets.DOCKERHUB_USERNAME }}/YOUR_DOCKER_IMAGE_NAME:YOUR_DOCKER_TAG .
+       - run: sudo docker push "${{ secrets.DOCKERHUB_USERNAME }}/YOUR_DOCKER_IMAGE_NAME:YOUR_DOCKER_TAG"
 
 ---
 
